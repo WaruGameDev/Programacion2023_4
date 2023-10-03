@@ -30,8 +30,6 @@ public class PlayerPlatformController : MonoBehaviour
     {
         actualPrebuff = prebuff;
         actualCoyoteTime = coyoteTime;
-        
-        
     }
 
     private void Update()
