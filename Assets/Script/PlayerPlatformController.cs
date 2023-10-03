@@ -24,11 +24,14 @@ public class PlayerPlatformController : MonoBehaviour
     public bool jumping;
 
     public bool canMove = true;
+    [Header("Feedback")] public ParticleSystem dustJump;
 
     private void Start()
     {
         actualPrebuff = prebuff;
         actualCoyoteTime = coyoteTime;
+        
+        
     }
 
     private void Update()
@@ -87,13 +90,20 @@ public class PlayerPlatformController : MonoBehaviour
             }
             if (isPrebuff && (isGround || isCoyoteTime)) // detectamos si el personaje esta en el piso y apretamos saltar
             {
-                jumping = true;
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.velocity += jumpPlayer * Vector2.up;//modificamos el rigidbody para impulsar el personaje hacia arriba
+               Jump();
             }
         }
-        
+    }
 
+    public void Jump()
+    {
+        if (!dustJump.isPlaying)
+        {
+            dustJump.Play();
+        }
+        jumping = true;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity += jumpPlayer * Vector2.up;//modificamos el rigidbody para impulsar el personaje hacia arriba
     }
 // usamos esta funcion con un raycas circle para detectar si esta en el piso el transform.
     bool IsGrounded(Transform check)
