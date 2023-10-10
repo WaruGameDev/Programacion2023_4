@@ -8,7 +8,7 @@ public class QuestGiver : MonoBehaviour
 
     public void AddQuest()
     {
-        if (QuestManager.instance.GetQuestStatus(questToGive.nameQuest) != QUEST_STATUS.ASSIGNED)
+        if (QuestManager.instance.GetQuestStatus(questToGive.nameQuest) == QUEST_STATUS.UNASSIGNED)
         {
             QuestManager.instance.AddQuest(questToGive);
         }
@@ -16,7 +16,7 @@ public class QuestGiver : MonoBehaviour
 
     public void AddQuest(string questToAddString)
     {
-        if (QuestManager.instance.GetQuestStatus(questToAddString) != QUEST_STATUS.ASSIGNED)
+        if (QuestManager.instance.GetQuestStatus(questToAddString) == QUEST_STATUS.UNASSIGNED)
         {
             QuestManager.instance.AddQuest(questToAddString);
         }

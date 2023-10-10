@@ -45,7 +45,6 @@ public class QuestManager : MonoBehaviour
                 return q.statusQuest;
             }
         }
-
         return QUEST_STATUS.UNASSIGNED;
     }
 
